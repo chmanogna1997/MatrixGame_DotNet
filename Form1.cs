@@ -18,17 +18,14 @@ namespace TermProj
         string User;
         int LostFocus = 0;
         int TextChanged = 0;
-        int a = 14;
-        int b = 10;
         int initial_x;
         int initial_y;
         string timer, Date_Time_Now;
         List<TextBox> Adjacent_box = new List<TextBox>();
-        //List<int> value_in_box = new List<int>();
-        List<Button> History_BTN = new List<Button>();
-        List<Label> History_LB = new List<Label>();
         List<KeyValuePair<string, string>> occupied_boxs = new List<KeyValuePair<string, string>>();
+        List<KeyValuePair<string, string>> Solution_list = new List<KeyValuePair<string, string>>(25);
         int[,] Filled_boxs = new int[5, 5];
+        int[,] Solution = new int[5, 5];
         public History_btn()
         {
             InitializeComponent();
@@ -114,7 +111,6 @@ namespace TermProj
                 DialogResult dialogResult = MessageBox.Show("Do you wanna change this", "Change Confirm", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    //do something
                     Filled_boxs[(int)Char.GetNumericValue(((TextBox)sender).Name[1]), (int)Char.GetNumericValue(((TextBox)sender).Name[2])] = 0;
                     foreach (var i in occupied_boxs.ToList()) { if (i.Key == ((TextBox)sender).Name) { occupied_boxs.Remove(i); } }
                     string G = occupied_boxs[occupied_boxs.Count() - 1].Key;
@@ -126,14 +122,9 @@ namespace TermProj
                     int P = Filled_boxs[(int)Char.GetNumericValue(((TextBox)sender).Name[1]),
                         (int)Char.GetNumericValue(((TextBox)sender).Name[2])];
                     ((TextBox)sender).Text = P.ToString();
-                    //Adjacent_boxes((int)Char.GetNumericValue(((TextBox)sender).Name[1]),
-                       // (int)Char.GetNumericValue(((TextBox)sender).Name[2])); 
-
                 }
 
             }
-            Console.WriteLine(" in the lopp");
-            foreach(var i in Adjacent_box) { Console.WriteLine(" bbbbbbbbbbbb {0}", i.Name); }
         }
         private static readonly Random rand = new Random();
 
@@ -165,7 +156,6 @@ namespace TermProj
             
             if (int.TryParse(((TextBox)sender).Text, out a)) 
             {
-                //Console.WriteLine(" value of a {0} and count is{1} ", a, occupied_boxs.Count());
                 if (a == (occupied_boxs.Count() + 1) && a <= 25 && a > 1)
                 {
 
@@ -179,7 +169,6 @@ namespace TermProj
 
                     Filled_boxs[(int)Char.GetNumericValue(((TextBox)sender).Name[1]),
                         (int)Char.GetNumericValue(((TextBox)sender).Name[2])] = Convert.ToInt32(((TextBox)sender).Text);
-                    //showHistory();
                     if (occupied_boxs.Count() == 25) { MessageBox.Show(" YOU WIN", "WIN"); }
                 }
                 else
@@ -229,9 +218,7 @@ namespace TermProj
             TB[initial_x, initial_y].Text = "1";
             TB[initial_x, initial_y].ReadOnly = true;
             occupied_boxs.Add(new KeyValuePair<string, string>(TB[initial_x,initial_y].Name, TB[initial_x,initial_y].Text));
-           //showHistory();
             Adjacent_boxes(initial_x, initial_y);
-           
             startBTN.Enabled = false;
             Reset_btn.Enabled = true;
         }
@@ -260,66 +247,8 @@ namespace TermProj
             Form2 Rules_FRM = new Form2();
             Rules_FRM.Show();
         }
-        public void showHistory()
-            {
-            int i = occupied_boxs.Count - 1;
-                History_LB.Add(new Label());
-                History_BTN.Add( new Button());
-                History_BTN[i].Name = i.ToString();
-                History_LB[i].Name = i.ToString();
-
-            History_BTN[i].Enabled = false;
-               
-                History_BTN[i].Text = "X";
-                History_BTN[i].ForeColor = Color.Red;
-                History_LB[i].Font = new Font(FontFamily.GenericSansSerif, 9.0F);
-                History_LB[i].AutoSize = true;
-                History_BTN[i].Font = new Font(FontFamily.GenericSansSerif, 10.0F, FontStyle.Bold);
-               
-                History_BTN[i].BackColor = Color.FromArgb(0, 255, 255, 255);
-                History_BTN[i].FlatAppearance.BorderSize = 0;
-                History_BTN[i].Click += this.HistoryBTN;
-                History_BTN[i].AutoSize = true;
-                History_BTN[i].TabStop = false;
-                History_BTN[i].FlatStyle = FlatStyle.Flat;
-                History_BTN[i].Width = 10;
-                History_LB[i].Location = new Point(14, a);
-                History_BTN[i].Location = new Point(305, b);
-                History_panel.Controls.Add(History_LB[i]);
-                History_panel.Controls.Add(History_BTN[i]);
-                a = a + 20;
-                b = b + 20;
-            History_LB[i].Text = "Step - " + (i+1).ToString() + "   BOX NO :" + (occupied_boxs[i].Key).ToString() + "    Value:" + (occupied_boxs[i].Value).ToString();
-          for(int j = 1; j <History_BTN.Count; j++)
-            {
-                if (j == (occupied_boxs.Count - 1)) { History_BTN[j].Enabled = true; }
-                else { History_BTN[j].Enabled = false; 
-                }            }
-        }
-
-        private void HistoryBTN(object sender, EventArgs e)
-        {
-            if (((Button)sender).Enabled)
-            {
-                int  V = (int)Char.GetNumericValue(((Button)sender).Name[0]);
-                    int x = (int)Char.GetNumericValue(occupied_boxs[V].Key[1]);
-                    int y = (int)Char.GetNumericValue(occupied_boxs[V].Key[2]);
-                int B = 0;
-                int L = 0;
-                History_BTN[V].Text = "";
-                History_LB[V].Text = "";
-                foreach (Button l in History_BTN) { if (l.Text == ((Button)sender).Text) { B = History_BTN.IndexOf(l); }  }
-                foreach (Label l in History_LB) { if (l.Name == ((Button)sender).Name) {L = History_LB.IndexOf(l); } }
-                if ((B - 1) != 0) { History_BTN[B - 1].Enabled = true; }
-                History_BTN.RemoveAt(B);
-                History_LB.RemoveAt(L);
-                occupied_boxs.RemoveAt(V);
-                TB[x, y].Text = " ";
-               
-            }
-        }
-
-        private void Exit(object sender, EventArgs e)
+        
+         private void Exit(object sender, EventArgs e)
         {
             t.Stop();
             this.Close();
@@ -337,39 +266,74 @@ namespace TermProj
 
         private void Reset_game(object sender, EventArgs e)
         {
-            //t.Stop();
             HR = 0; MIN = 0; SEC = 0;
             t.Start();
-            //StartTimer();
             int LostFocus = 0;
             int TextChanged = 0;
-
             foreach(var T in TB) { T.Text = null; T.ReadOnly = false; }
             Array.Clear(Filled_boxs, 0, Filled_boxs.Length);
-            foreach (Button bb in History_BTN) { bb.Text = ""; }
-            foreach(Label l in History_LB) { l.Text = ""; }
-            History_BTN.Clear();
-            History_LB.Clear();
-
             occupied_boxs.Clear();
             initial_x = rand.Next(0, 5);
             initial_y = rand.Next(0, 5);
-            //foreach(TextBox T in TB) { T.ReadOnly = true; }
             TB[initial_x, initial_y].Text = "1";
             TB[initial_x, initial_y].ReadOnly = true;
             occupied_boxs.Add(new KeyValuePair<string, string>(TB[initial_x, initial_y].Name, TB[initial_x, initial_y].Text));
             Adjacent_boxes(initial_x, initial_y);
-            a = 14;
-            b = 14;
-            //showHistory();
-            
-             
-
         }
 
         private void Solution_Btn_Click(object sender, EventArgs e)
         {
-            //Adjacent_boxes(x, y);
+            
+            int C = 1;
+            int x = initial_x;
+            int y = initial_y;
+            Solution_list.Add(new KeyValuePair<string, string>(TB[x,y].Name, TB[x,y].Text));
+            Solution[x, y] = C;
+            Console.WriteLine("x : {0} Y : {1} ", x, y);
+            foreach(int i in Solution) { Console.WriteLine("{0}", i); }
+        }
+
+
+
+        public void check_adjacent_B(int x,int y)
+        {   
+            Adjacent_boxes((x), y); 
+            if (Adjacent_box.Count() > 1)
+            {
+                int Num = Solution_list.Count() + 1;
+                TB[x, y].Text = Num.ToString();
+                string Name = "T" + x.ToString() + y.ToString();
+                Solution_list.Add(new KeyValuePair<string, string>(Name, Num.ToString() ));
+                //Solution[x - 1, y] = Solution_list.Count() + 1; 
+            }
+            else
+            {
+                Reverse_check(x, y);
+            }
+        }
+
+        public void check_right(int x, int y)
+        {
+            if ((x - 1) >= 0) { check_adjacent_B((x - 1), y); Console.WriteLine("x : {0}, y : {1}", x-1, y); }
+            if ((x - 1) >= 0 && (y + 1) < 5) { check_adjacent_B((x - 1), y + 1); Console.WriteLine("x : {0}, y : {1}", x - 1, y+1); }
+            if (y + 1 < 5) { check_adjacent_B(x, y + 1); Console.WriteLine("x : {0}, y : {1}", x, y+1); }
+            if ((x + 1) < 5 && (y + 1) < 5) { check_adjacent_B((x + 1), (y + 1)); Console.WriteLine("x : {0}, y : {1}", x + 1, y+1); }
+            if ((x + 1) < 5) { check_adjacent_B((x + 1), y); Console.WriteLine("x : {0}, y : {1}", x + 1, y); }
+            if ((x + 1) < 5 && (y - 1) >= 0) { check_adjacent_B((x + 1), y - 1); Console.WriteLine("x : {0}, y : {1}", x + 1, y-1); }
+            if ((y - 1) >= 0) { check_adjacent_B(x, y - 1); Console.WriteLine("x : {0}, y : {1}", x, y-1); }
+            if ((y - 1) >= 0 && (x - 1) >= 0) { check_adjacent_B(x - 1, y - 1); x = x - 1; y = y - 1; check_right(x, y); Console.WriteLine("x : {0}, y : {1}", x - 1, y-1); }
+        }
+
+        public void Reverse_check(int x, int y)
+        {
+            if ((y - 1) >= 0 && (x - 1) >= 0) { check_adjacent_B(x - 1, y - 1); }
+            if ((y - 1) >= 0) { check_adjacent_B(x, y - 1); }
+            if ((x + 1) < 5 && (y - 1) >= 0) { check_adjacent_B((x + 1), y - 1); }
+            if ((x + 1) < 5) { check_adjacent_B((x + 1), y); }
+            if ((x + 1) < 5 && (y + 1) < 5) { check_adjacent_B((x + 1), (y + 1)); }
+            if (y + 1 < 5) { check_adjacent_B(x, y + 1); }
+            if ((x - 1) >= 0 && (y + 1) < 5) { check_adjacent_B((x - 1), y + 1); }
+            if ((x - 1) >= 0) { check_adjacent_B((x - 1), y); x = x - 1; y = y; check_right(x, y); }
 
         }
     }
