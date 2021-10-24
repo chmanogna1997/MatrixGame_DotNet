@@ -1,0 +1,12 @@
+C:\Users\91733\source\repos\TermProj final one\TermProj\obj\Debug\TermProj.csproj.AssemblyReference.cache
+C:\Users\91733\source\repos\TermProj final one\TermProj\obj\Debug\TermProj.Form2.resources
+C:\Users\91733\source\repos\TermProj final one\TermProj\obj\Debug\TermProj.Properties.Resources.resources
+C:\Users\91733\source\repos\TermProj final one\TermProj\obj\Debug\TermProj.csproj.GenerateResource.cache
+C:\Users\91733\source\repos\TermProj final one\TermProj\obj\Debug\TermProj.csproj.CoreCompileInputs.cache
+C:\Users\91733\source\repos\TermProj final one\TermProj\bin\Debug\TermProj.exe.config
+C:\Users\91733\source\repos\TermProj final one\TermProj\bin\Debug\TermProj.exe
+C:\Users\91733\source\repos\TermProj final one\TermProj\bin\Debug\TermProj.pdb
+C:\Users\91733\source\repos\TermProj final one\TermProj\obj\Debug\TermProj.exe
+C:\Users\91733\source\repos\TermProj final one\TermProj\obj\Debug\TermProj.pdb
+C:\Users\91733\source\repos\TermProj final one\TermProj\obj\Debug\TermProj.welcome.resources
+C:\Users\91733\source\repos\TermProj final one\TermProj\obj\Debug\TermProj.History_btn.resources
