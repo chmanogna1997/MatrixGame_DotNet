@@ -8,5 +8,11 @@ C:\Users\91733\source\repos\TermProj final one\TermProj\bin\Debug\TermProj.exe
 C:\Users\91733\source\repos\TermProj final one\TermProj\bin\Debug\TermProj.pdb
 C:\Users\91733\source\repos\TermProj final one\TermProj\obj\Debug\TermProj.exe
 C:\Users\91733\source\repos\TermProj final one\TermProj\obj\Debug\TermProj.pdb
-C:\Users\91733\source\repos\TermProj final one\TermProj\obj\Debug\TermProj.welcome.resources
 C:\Users\91733\source\repos\TermProj final one\TermProj\obj\Debug\TermProj.History_btn.resources
+C:\Users\91733\source\repos\TermProj final one\TermProj\obj\Debug\TermProj.Form3.resources
+C:\Users\91733\source\repos\TermProj final one\TermProj\obj\Debug\TermProj.Game2.resources
+C:\Users\91733\source\repos\TermProj final one\TermProj\obj\Debug\TermProj.Rules_Game2.resources
+C:\Users\91733\source\repos\TermProj final one\TermProj\obj\Debug\TermProj.Game_3.resources
+C:\Users\91733\source\repos\TermProj final one\TermProj\obj\Debug\TermProj.Game_3_Rules.resources
+C:\Users\91733\source\repos\TermProj final one\TermProj\obj\Debug\TermProj.Form4.resources
+C:\Users\91733\source\repos\TermProj final one\TermProj\obj\Debug\TermProj.History.resources
