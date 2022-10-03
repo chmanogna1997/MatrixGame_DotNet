@@ -25,11 +25,11 @@ Magic Puzzle is a 3 level puzzle game. Has following key functionalities :
 
 ## Level 2 :
 
-### Level 1 Home page :
+### Level 2 Home page :
 
 ![game_2](https://user-images.githubusercontent.com/91714626/193656837-79a9c06d-d0b5-483e-8b44-308365000c02.PNG)
 
-### Level 1 Rule Book :
+### Level 2 Rule Book :
 
 ![game_2_rules](https://user-images.githubusercontent.com/91714626/193657418-9d132150-8f16-4297-8f83-2ac8b6d5ba72.PNG)
 
