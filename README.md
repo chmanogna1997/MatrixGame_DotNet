@@ -57,7 +57,8 @@ Magic Puzzle is a 3 level puzzle game. Has following key functionalities :
 
 # On Game Pause :
 
-![game_history](https://user-images.githubusercontent.com/91714626/193678724-fd6f94ed-795c-49b9-aa89-a2c88a6c6eb2.PNG)
+![onPause](https://user-images.githubusercontent.com/91714626/193679935-86c9053d-8a21-41fe-b13f-f95b1c3634da.PNG)
+
 
 
 
